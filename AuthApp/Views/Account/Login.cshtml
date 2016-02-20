@@ -1,0 +1,28 @@
+﻿@model AuthApp.Models.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Вход на сайт</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        @Html.ValidationSummary()
+        <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl"/>
+        <p>
+            @Html.LabelFor(m => m.Name, "Имя пользователя")<br/>
+            @Html.EditorFor(m => m.Name)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Password, "Пароль")<br/>
+            @Html.EditorFor(m => m.Password)
+        </p>
+        <p><button type="submit">Войти</button></p>
+    </div>
+}
+

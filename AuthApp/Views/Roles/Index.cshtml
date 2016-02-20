@@ -1,0 +1,25 @@
+﻿@model IEnumerable<AuthApp.Models.ApplicationRole>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Роли</h2>
+<p>@Html.ActionLink("Добавить новую роль", "Create", "Roles")</p>
+
+<table class="table">
+    <tr>
+        <th>Название</th>
+        <th>Описание</th>
+        <th colspan="2"></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Description</td>
+            <td>@Html.ActionLink("Edit", "Edit", new {id = item.Id})</td>
+            <td>@Html.ActionLink("Delete", "Delete", new {id = item.Id})</td>
+        </tr>
+    }
+</table>
